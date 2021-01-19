@@ -42,8 +42,16 @@ class BinarySearchTree {
   }
 
   lookup(value) {
-    //Code here
+    return this._findValueInTree(value, this.root);
   }
+
+  _findValueInTree(value, node) {
+    if (!node) return null;
+    if (node.value === value) return node;
+    if (node.value > value) return this._findValueInTree(value, node.left);
+    if (node.value < value) return this._findValueInTree(value, node.right);
+  }
+
   // remove
 }
 
@@ -55,7 +63,8 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-JSON.stringify(traverse(tree.root))
+console.log(tree.lookup(6));
+//JSON.stringify(traverse(tree.root))
 
 //     9
 //  4     20
